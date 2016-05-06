@@ -1,0 +1,19 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    csv_file_reader:
+        class: ParserBundle\Reader\CsvFileReader
+    xml_file_reader:
+        class: ParserBundle\Reader\XmlFileReader
+    csv_parser_type_a:
+        class: ParserBundle\Parser\CSVParserTypeA
+        arguments: ['@csv_file_reader', '@event_dispatcher']   
+    xml_parser_type_b:
+        class: ParserBundle\Parser\XMLParserTypeB
+        arguments: ['@xml_file_reader', '@event_dispatcher']   
+    parser_factory:
+        class: ParserBundle\Parser\ParserFactory 
+        arguments: ['@csv_parser_type_a', '@xml_parser_type_b']     
