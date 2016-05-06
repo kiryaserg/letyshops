@@ -70,7 +70,13 @@ shop.last_import_time
 який довелось трохи форкнути 
 
 ## Запуск сервера
-Перед запуском провести міграцію бази: 
+
+#### Перед запуском:
+ Установити залежності:
+```
+composer update
+```
+ Провести міграцію бази: 
 ```
 php bin\console doctrine:database:create
 php bin\console doctrine:migrations:migrate
